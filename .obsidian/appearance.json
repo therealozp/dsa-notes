@@ -1,5 +1,6 @@
 {
   "accentColor": "",
   "cssTheme": "Atom",
-  "textFontFamily": "Satoshi"
+  "textFontFamily": "Satoshi",
+  "baseFontSize": 19
 }
