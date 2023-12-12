@@ -1,9 +1,8 @@
 
 # layout
 needs to have an input field to enter linked lists
-space to add / remove nodes?
-general canvas
-
+- [x] space to add / remove nodes? ✅ 2023-12-12
+- [x] general canvas
 # pathfinding algorithms
 
 1. create a grid of items (separate div elements)
@@ -27,3 +26,12 @@ components:
 
 - [ ] individual nodes / pointers to next
 - [ ] edges between nodes
+
+### graphs
+components:
+
+- [x] node (represented by value) ✅ 2023-12-12
+- [x] edges (unweighted) ✅ 2023-12-12
+- [ ] edges (weighted)
+- [x] add node/edge ✅ 2023-12-12
+- [x] adjacency list text editing field ✅ 2023-12-12
