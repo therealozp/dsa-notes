@@ -1,6 +1,6 @@
 in dsa, using prefix or suffix arrays of a sum or a product can help reduce speeds from $O(n^2)$ to $O(n)$. the strategy is that we pre-compute the accumulating sums/products of each element in the array, and then using those to compute whatever the problem requires. 
 
-put simply, the prefix array is the product/sum of elements **before** a certain index, while a pthe suffix counterpart is simply the **latter**. hence, we can derive quickly that without a certain index means we can just pair the two together.
+put simply, the prefix array is the product/sum of elements **before** a certain index, while the suffix counterpart is simply the **latter**. hence, we can derive quickly that without a certain index means we can just pair the two together.
 
 for example, if the problem to asks to compute the product of each element in the array **except** for the current element, we can implement this by using: 
 
