@@ -85,3 +85,23 @@ in this ADT, there is no `ListHead`. the first node simply points to the last, a
 obviously, this means that traversal cannot be done normally, and instead must be done some other way. special care must be given to avoid **infinite loops**. **reversing**is also troublesome with CLLs. 
 
 CLLs can be used for making an event thread that schedules programs, or represent turn-based games. we can also use CLLs to represent a **circular queue**. 
+### initialization
+we initialize the CLL with an empty list, with a `last` pointer. when adding a new element to the empty list, we set the `last->next` pointer to the new element and have its `next` point to itself. 
+
+so, insertion into an empty list or the beginning of a list looks like: 
+
+```cpp
+n = new Node();
+n->next = last->next;
+last->next = n;
+```
+
+while inserting at the end of a list looks like: 
+
+```cpp
+n->next = last->next;
+last->next = n;
+last = n;
+```
+
+inserting in between nodes should occur normally as to how inserting in a singly-linked list would be. traversal, on the other hand, can be handled by starting from the `last->next` node, and stopping the iteration when it is reached a second time.
