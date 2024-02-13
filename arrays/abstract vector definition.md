@@ -94,4 +94,4 @@ void ArrayVector::erase(int i) {
 }
 ```
 
-for operations on lists or linked lists, we implement an [iterator](arrays/lists%20and%20iterators.md) to loop through the data structure.
+for operations on lists or linked lists, we implement an [iterator](lists,%20iterators,%20and%20sequences.md) to loop through the data structure.
