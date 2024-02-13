@@ -1,3 +1,4 @@
+#recursion
 ## definition
 any recursive function should satisfy two requirements: 
 - it has a **base case**

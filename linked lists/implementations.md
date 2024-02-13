@@ -1,3 +1,4 @@
+#theory #linked-lists
 ## what's the difference between this and arrays?
 - an array is a contiguous chunk of memory, while linked lists are a collection of unordered, linked **nodes**. 
 - indexing in array takes $O(1)$, while linked lists take $O(n)$
@@ -103,3 +104,5 @@ last = n;
 ```
 
 inserting in between nodes should occur normally as to how inserting in a singly-linked list would be. traversal, on the other hand, can be handled by starting from the `last->next` node, and stopping the iteration when it is reached a second time.
+
+saira - wednesday last week

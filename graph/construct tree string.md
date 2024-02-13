@@ -1,4 +1,4 @@
-#graph 
+#graph #dfs
 
 Given a binary tree, how do we construct a string representation of the tree? This depends on the implementation, if the prompt asks to **ignore the null right node** or to make a **complete** representation. In any case, the algorithm provided is sufficient enough to traverse the tree using DFS and log out the elements accordingly. 
 

@@ -1,3 +1,4 @@
+#dp #subsequences
  this problem makes use of the bottom-up dynamic programming approach, which helps reconstruct the bigger problem from smaller, subproblems. the problem statements asks to find the length of the longest common subsequence (lcs), for example: 
 
 `abcde`

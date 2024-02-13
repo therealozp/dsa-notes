@@ -1,3 +1,4 @@
+#theory #arrays
 a collection of items in a linear order is called a **list**, or a **sequence.** and a sequence that is supported by accessing elements by means of **indexing** is called a **vector**, aka. dynamic arrays, vector lists, etc.
 
 in its most basic form, a vector should support these operations: 

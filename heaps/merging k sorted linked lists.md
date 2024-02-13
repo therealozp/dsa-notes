@@ -1,3 +1,4 @@
+#linked-lists #heap
 whenever we have a number of items that requires to be combined and sorted, or just continuously querying min/max items, using heaps are a good idea to consider. in this case, we want to merge k sorted linked list, with each node having the properties: 
 
 ```python

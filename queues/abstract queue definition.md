@@ -1,3 +1,4 @@
+#theory #queue
 a queue is first-in-first-out (FIFO) data structure. most common applications are client-server models, grocery stores, SFTP Clients, etc.
 
 at its most basic level, a queue ADT should support operations such as `enqueue()`, `dequeue()`, `empty()`, and `front()`. of course, for variants such as a double-ended queue (deque), we need other auxiliary functions as well. 

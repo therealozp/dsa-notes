@@ -1,3 +1,4 @@
+#theory #arrays
 arrays are collections of elements that are of the **same type**, and can divided into 2 sub-classes.
 
 | Actions | Time complexity |
