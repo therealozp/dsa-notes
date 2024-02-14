@@ -72,7 +72,6 @@ the only difference between a linked list and a doubly-linked list is that each 
 however, this comes at the cost of: 
 - **memory**: needs one extra slot for pointer to `prev`
 - **performance**: always having to update both pointers on every operation
-
 ### implementation
 as always, we can either take a reference directly to the `ListHead` and `ListTail` like singly-linked lists, or we can take a header-trailer approach which contains two **sentinels** at the front and the back. 
 
@@ -87,20 +86,39 @@ CLLs can be used for making an event thread that schedules programs, or represen
 ### initialization
 we initialize the CLL with an empty list, with a `last` pointer. when adding a new element to the empty list, we set the `last->next` pointer to the new element and have its `next` point to itself. 
 
+```cpp
+class CLList: 
+	private: 
+		Node * last; 
+	public: 
+		CLList(); // default constructor
+		~CLList(); // destructor
+		void insert_front();
+		void insert_back(); 
+```
+
 so, insertion into an empty list or the beginning of a list looks like: 
 
 ```cpp
-n = new Node();
-n->next = last->next;
-last->next = n;
+void insert_front() {
+	Node * n = new Node;
+	n->next = last->next;
+	last->next = n;
+}
 ```
 
 while inserting at the end of a list looks like: 
 
 ```cpp
-n->next = last->next;
-last->next = n;
-last = n;
+void insert_back() {
+	Node * n = new Node; 
+	// n's next node is the current head
+	n->next = last->next;
+	// point previous last's next to current
+	last->next = n;
+	// update last node
+	last = n;
+}
 ```
 
 inserting in between nodes should occur normally as to how inserting in a singly-linked list would be. traversal, on the other hand, can be handled by starting from the `last->next` node, and stopping the iteration when it is reached a second time.

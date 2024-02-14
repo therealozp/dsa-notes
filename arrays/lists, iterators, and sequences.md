@@ -1,3 +1,4 @@
+#theory
 other than using **indexing** to reach elements in a linear structure, we can also implement a **list ADT** and use a **position** element that abstracts the notion of "place" in a list. 
 
 in essence, the list ADT uses the linked list under the hood alongside another ADT that abstracts "place". however, this approach means that indexing will take **linear time** instead of constant as in arrays.
@@ -31,7 +32,7 @@ there are many variants of iterators, and ranging from least to most powerful:
 - **random access iterator**: allows for `p + i` and `p - i`, essentially behaves like a pointer
 
 ## implementation: deque
-we have discussed the [deque](queues/abstract%20queue%20definition.md), and using that as a base, we add on the iterator datatype to loop through the structure. intrinsically, it should have the following members: 
+we have discussed the [deque](abstract%20queue%20definition.md), and using that as a base, we add on the iterator datatype to loop through the structure. intrinsically, it should have the following members: 
 
 ```cpp
 template <typename T> class Deque<T>: 
