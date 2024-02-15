@@ -1,6 +1,6 @@
 a puzzle where the player has to move all disks of **increasing sizes** from the starting post to the ending post, with one auxiliary post allowed. the disks of larger size must never go on top of one of smaller size. 
 
-the time complexity required to solve this problem is $O(2^n)$, as it takes $2^{n}-1$ steps to move everything over. consequently, the problem requires $2^{n}$ `push()` calls and $2^n$ `pop()` calls in total. 
+the time complexity required to solve this problem is $O(2^n)$, as it takes $2^{n}-1$ steps to move everything over. consequently, the problem requires $2^{n} - 1$ `push()` calls and $2^{n}-1$ `pop()` calls in total. 
 
 the function is implemented as such: 
 

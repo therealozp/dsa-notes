@@ -4,6 +4,12 @@
 - indexing in array takes $O(1)$, while linked lists take $O(n)$
 - `insert()` and `delete()` in arrays take $O(n)$
 - arrays have fixed size, linked lists do not.
+
+| data structure | $k^{th}$ entry | insert front | insert at $k$ | insert back |
+| ---- | ---- | ---- | ---- | ---- |
+| singly linked list | $O(n)$ | $\Theta(1)$ | $\Theta(1)$ if already accessed $k$, else $O(n)$ | $\Theta(1)$ if has access to the tail, else $\Theta(n)$ |
+| arrays | $\Theta(1)$ | $\Theta(1)$ if double-ended, else $\Theta(n)$ (because elements have to be shifted) | $O(n)$ | $\Theta(1)$ |
+
 ## singly-linked lists
 having a separate `Node` class helps it to be re-used later with subsequent different implementations.
 
@@ -55,15 +61,16 @@ class LList {
 ```
 
 ### time complexity
-| Operation | Front Node | $k^{th}$ node | $n^{th}$ node |
+| Operation | Front Node | $k^{th}$ node | $n^{th}$ node (if we have access to `list_tail`) |
 | ---- | ---- | ---- | ---- |
-| Find | $\Theta(1)$ | $O(n)$ | $\Theta(1)$ |
+| Find | $\Theta(1)$ | $O(n)$ | $\Theta(1)$  |
 | Insert before | $\Theta(1)$ | $O(n)$ | $O(n)$ |
-| Insert after | $\Theta(1)$ | $\Theta(1)$ | $\Theta(1)$ |
-| Replace | $\Theta(1)$ | $\Theta(1)$ | $\Theta(1)$ |
+| Insert after | $\Theta(1)$ | $\Theta(1)$ * | $\Theta(1)$ |
+| Replace | $\Theta(1)$ | $\Theta(1)$ * | $\Theta(1)$ |
 | Delete | $\Theta(1)$ | $O(n)$ | $O(n)$ |
-| Next | $\Theta(1)$ | $\Theta(1)$ | $O(n)$ |
+| Next | $\Theta(1)$ | $\Theta(1)$ * | $O(n)$ |
 | Prev | n/a | $O(n)$ | $O(n)$ |
+the * indicates that these operations are only constant time ***given that we have accessed the $k^{th}$ before***, which is an $O(n)$ operation. 
 ## doubly linked list
 the only difference between a linked list and a doubly-linked list is that each doubly linked node has a reference to its **previous** node. DLLs are good for: 
 - traversing in both directions
