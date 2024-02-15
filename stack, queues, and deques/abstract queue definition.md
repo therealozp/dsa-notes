@@ -57,6 +57,5 @@ void ArrayQueue<E>::dequeue() throw(QueueFull) {
 this is done by modifying the `front` and `rear` pointers to step ahead by 1. the beauty of this implementation lies in the fact that we don't ever have to worry about the actual position of the elements, so long as we have the two pointers, it will be enough to handle any `enqueue()` or `dequeue()` operations we might eventually have. 
 ### CLL queue
 alternatively, with the circular linked list [[implementations]], we have the `advance()` method to move the cursor (the rear), and the `front()` method that does the `dequeue()`. 
-
 ## deque
 deques will have to implement an extra 2 functions to make up the complete suite of `insertFront()`, `insertBack()`, `removeFront()`, and `popBack()`. this one is best implemented using a DLL, but there are many alternatives to it. 

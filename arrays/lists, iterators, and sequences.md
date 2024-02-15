@@ -86,7 +86,7 @@ class Iterator {
 		
 	private:  
 		Node* v; // pointer to the node  
-		// private constractor create from node
+		// private constructor created from node
 		Iterator(Node* u); {
 			v = u; 
 		}
@@ -214,3 +214,65 @@ by contrast, an array implementation will make use of the circular array. again,
 | `push_back()`, `pop_back()` | $O(1)$ | $O(1)$ |
 | `insert_front()`, `pop_front()` | $O(n)$ | $O(1)$ |
 | `insert(position p, elem e)`, `erase(p)` | $O(n)$ | $O(1)$ |
+
+an implementation for a sequence using a circular array can look like the following: 
+
+the position class implements the `*` operator to retrieve the **reference to the element**:
+```cpp
+class Position {
+	public:
+		Position(T &elem, int i) : element(elem), index(i) {}
+		T &operator* { return element }
+	private:
+		T element;
+		int index;
+};
+```
+
+```cpp
+template <typename T> class ArraySequence {
+	private:
+		int capacity;
+		int f, l, n;
+		Position<T> *array;
+	public:
+	ArraySequence(int cap = 10) : capacity(cap), f(0), l(0), n(0) {
+		Position<T> arr[cap];
+		array = arr;
+	};
+	~ArraySequence() { delete[] array; };
+	void push_back(T &element);
+	void push_front(T &element);
+	T pop_back();
+	T pop_front();
+	T &back();
+	T &front();
+};
+```
+
+```cpp
+push_back(T &element) {
+	array[l] = Position<T>(element, r);
+	l = (l + 1) % capacity;
+	n++;
+}
+
+push_front(T &element) {
+	f = (f - 1 + capacity) % capacity;
+	array[f] = Position<T>(element, f);
+	n++;
+}
+
+pop_back() {
+	l = (l - 1 + capacity) % capacity;
+	n--;
+	return *array[l];
+}
+
+pop_front() {
+	T elem = *array[f];
+	f = (f + 1) % capacity;
+	n--;
+	return elem;
+}
+```
