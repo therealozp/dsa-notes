@@ -13,3 +13,4 @@ ADT design should follow 5 main principles:
 - I: **interface segregation**. it's better to have many specialized clients than one general one.
 - D: **dependency inversion**. base classes should not depend on derived classes, but both should depend on the ADT. abstractions should not depend on details, but the details should depend on the abstraction.
 
+polymorphism essentially means many functions having the same name can perform different operations. in C++, functions can be overloaded to take a different number of arguments, etc, while class methods can be bound dynamically with the `virtual` keyword. 

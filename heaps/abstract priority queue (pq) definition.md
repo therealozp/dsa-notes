@@ -103,3 +103,71 @@ void PQSort(Sequence S, Comparator C) {
 }
 ```
 
+## implement a priority queue with a heap
+we store a `(key, element)` item at each node of the heap, and always keep track of the position of the last node. 
+
+### insertion
+the `insert()` method corresponds to the insertion of a key `k` into the heap, and insertion will consist of 3 steps: 
+1. find the new last node (the insertion node `z`)
+2. store `k` at `z`
+3. restore the heap property (`heapify()`)
+
+### removal
+the removal process will only occur when `removeMin()` is called.
+1. replace the root with the last node `w`
+2. remove `w` (effectively popping the minimum)
+3. restore the heap property (`heapifyDown()`)
+
+### the `heapify()` functions
+since inserting and removal will eventually lead to the heap property being violated, we must have a function to guarantee the order. 
+- `heapifyUp()` will swap the newly-inserted node `k` along an upward path from the insertion node. 
+	- the function terminates until `k` reaches root or has a parent with key $\leq$ k.
+	- since heap has height $O(\log(n))$, the function has time complexity $O(\log(n))$
+
+```cpp
+insert(const E& e) {  
+	// add e to heap  
+	T.addLast(e);  
+	// e's position  
+	Position v = T.last();  
+	// up-heap bubbling  
+	while (!T.isRoot(v)) {  
+		Position u = T.parent(v);  
+		// if v in order, we're done  
+		if (!isLess(*v, *u)) break;  
+		// ...else swap with parent  
+		T.swap(v, u);  
+		v = u;  
+	}  
+}
+```
+
+- `heapifyDown()` will bubble the node replaced with the root `k` downward.
+	- the function terminates when `k` reaches leaf or has children with keys $\geq$ k.
+	- also runs in $O(\log(n))$
+
+```cpp
+  
+removeMin() {  
+	if (size() == 1) { // only one node? remove it  
+		T.removeLast();  
+	} else {  
+		Position u = T.root();  
+		// swap last with root and remove last  
+		T.swap(u, T.last()); T.removeLast();  
+		// down-heap bubbling  
+		while (T.hasLeft(u)) {  
+			Position v = T.left(u);  
+			if (T.hasRight(u) && isLess(*(T.right(u)), *v)) {  
+				v = T.right(u); // v is u's smaller child  
+			}  
+			// is u out of order? then swap  
+			if (isLess(*v, *u)) {  
+				T.swap(u, v);  
+				u = v;  
+			} else { break; } // else we're done  
+		}  
+	}  
+}
+```
+

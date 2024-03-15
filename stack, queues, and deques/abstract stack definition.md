@@ -1,5 +1,5 @@
 #theory #stack
-A last-in-first-out data structure, much like a stack of plates or organized laundry. it has two main operations, both taking $O(1)$ time: 
+A last-in-first-out (LIFO) data structure, much like a stack of plates or organized laundry. it has two main operations, both taking $O(1)$ time: 
 - `push()`: appends an element to the end of the stack. 
 - `pop()`: removes the topmost element in the stack. 
 ## implementations

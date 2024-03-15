@@ -5,7 +5,7 @@
 - `insert()` and `delete()` in arrays take $O(n)$
 - arrays have fixed size, linked lists do not.
 
-| data structure | $k^{th}$ entry | insert front | insert at $k$ | insert back |
+|  | $k^{th}$ entry | insert front | insert at $k$ | insert back |
 | ---- | ---- | ---- | ---- | ---- |
 | singly linked list | $O(n)$ | $\Theta(1)$ | $\Theta(1)$ if already accessed $k$, else $O(n)$ | $\Theta(1)$ if has access to the tail, else $\Theta(n)$ |
 | arrays | $\Theta(1)$ | $\Theta(1)$ if double-ended, else $\Theta(n)$ (because elements have to be shifted) | $O(n)$ | $\Theta(1)$ |
@@ -37,7 +37,7 @@ class LList {
 		void addFront(const E& e); // add to front of list  
 		void removeFront(); // remove front item list  
 	private:  
-		SNode<E>* head; 
+		Node<E>* head; 
 };
 ```
 ### alternative implementation
