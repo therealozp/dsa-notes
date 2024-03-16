@@ -33,7 +33,7 @@ then, a node of a BinaryTree will have the class prototype:
 
 ```cpp
 struct Node {
-	Elem e; 
+	Elem element; 
 	Node* parent; 
 	Node* left; 
 	Node* right; 
@@ -51,17 +51,17 @@ class Position {
 		Node* v; // pointer to the node  
 	public:  
 		Position(Node* _v = NULL) : v(_v) {} // default constructor  
-		Elem& operator*() { return v->elt; } 
+		Elem& operator*() { return v->element; } 
 		
 		// get left, right, parent child  
 		Position left() const { return Position(v->left); }  
 		Position right() const { return Position(v->right); }  
-		Position parent() const { return Position(v->par); }  
+		Position parent() const { return Position(v->parent); }  
 		
 		// is root or external/leaf?  
-		bool isRoot() const { return v->par == NULL; }  
+		bool isRoot() const { return v->parent == NULL; }  
 		bool isExternal() const {  
-		return v->left == NULL && v->right == NULL;  
+			return v->left == NULL && v->right == NULL;  
 		}
 	friend class LinkedBinaryTree; // give tree access  
 };  
