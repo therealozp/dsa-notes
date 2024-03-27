@@ -77,7 +77,6 @@ template <typename E> class SearchTree {
 		Iterator begin(); // iterator to first entry  
 		Iterator end(); // iterator to end entry
 		
-	
 	// local utilities
 	protected: 
 		// a linked-based binary tree
@@ -112,7 +111,10 @@ Class Iterator {
 		E& operator*() { return *v; }
 		  
 		// are iterators equal?  
-		bool operator==(const Iterator& p) const { return v == p.v;}  
+		bool operator==(const Iterator& p) const { 
+			return v == p.v;
+		}
+		  
 		Iterator& operator++(); // next node in inorder   
 	friend class SearchTree; // give search tree access  
 };
@@ -210,7 +212,7 @@ to perform the `insert()` operation, we first search for the key $k$ we are look
 ```cpp
 // helper function
 SearchTree<E>::TPos inserter(const Key& k, const Value& x) {  
-	TPos v = finder(k, root()); // search from virtual root
+	TPos v = finder(k, root()); // search from actual root
 		  
 	while (v.isInternal()) // key already exists?  
 		v = finder(k, v.right()); // look further

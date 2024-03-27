@@ -69,9 +69,15 @@ template <typename E> class VectorCompleteTree {
 			*p = e;  
 		}  
 		 
-		Position left(const Position& p) { return pos(2 * idx(p)); }  
-		Position right(const Position& p) { return pos(2 * idx(p) + 1); }  
-		Position parent(const Position& p) { return pos(idx(p)/2); }  
+		Position left(const Position& p) { 
+			return pos(2 * idx(p)); 
+		}  
+		Position right(const Position& p) { 
+			return pos(2 * idx(p) + 1); 
+		}  
+		Position parent(const Position& p) { 
+			return pos(idx(p)/2); 
+		}  
 		bool hasLeft(const Position& p) const { 
 			return 2 * idx(p) <= size(); 
 		}  

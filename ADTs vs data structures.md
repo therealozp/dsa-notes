@@ -6,6 +6,7 @@ an ADT is viewed from the perspective of the **user**, meaning it should have x,
 
 the most vital part of an ADT is its **encapsulation**, meaning that there should be no pointer that can access the internal data of the data structure from outside. an insertion into the list should be taken as a *copy* of the original, and retrieval from the ADT should return a *copy* of what is in that list, instead of the actual reference to the element.
 
+## the SOLID princple
 ADT design should follow 5 main principles: 
 - S: **single responsibility**. each class should only solve 1 problem, and other classes should be tasked with theirs.
 - O: **open-closed design**. it should be open for extension, but closed for modifications.

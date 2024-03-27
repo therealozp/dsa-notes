@@ -1,5 +1,5 @@
 ## preorder traversal
-a preorder traversal occurs when a node is visited before its children. in this manner, it is most similar to a graph depth-first search, where all lefts are visited linearly, before going on to the right subtrees and so on. 
+a preorder traversal occurs when a node is visited before its children. in this manner, it is most similar to a graph depth-first search, where all lefts are visited linearly, before going on to the right subtrees and so on. use cases for preorder traversal are for printing structured documents, etc.
 
 ```cpp
 void preorderPrint(const Tree& T, const Position& p) {  

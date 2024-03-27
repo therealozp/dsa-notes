@@ -3,7 +3,7 @@ a binary tree must satisfy the following properties:
 - the children of the node are an ordered pair (any children of an internal node are annotated left and right)
 
 there are many types of binary trees: 
-- a **full** (or proper) binary tree's nodes all have either 0 or 2 children.
+- in a **full** (or proper) binary tree, nodes all have either 0 or 2 children.
 - in a **perfect** binary tree, all branches have 2 children, and all leaves must be at the same depth
 - in a **complete** binary tree, every level (except possibly the last) is completely filled, and pushed as far to the left as possible. 
 - in a **balanced** binary tree, the left and right subtrees of all trees must only differ by at most 1. recursively speaking, the left and right subtrees of each node must also be balanced. 
@@ -18,9 +18,8 @@ let:
 then: 
 1. $h + 1 \leq n \leq 2^{h + 1} - 1$ (the number of nodes is at least height + 1, and at most $2^{h+1} -1$)
 2. $1 \leq e \leq 2^{h}$ - the number of external nodes are at least 1, and at most $2^{h}$
-3. $h \leq i \leq 2^{h} - 1$
-4. $log(n+1) - 1 \leq h \leq n -1$
-
+3. $h \leq i \leq 2^{h} - 1$ - the number of internal nodes are at least equal to height, and at most $2^{h}-1$
+4. $log(n+1) - 1 \leq h \leq n -1$ - the height in a binary tree must be a minimum $log_{2}(n + 1) - 1$ (to account for the root) and at most $n-1$ (a linear case)
 ## implementations
 a BinaryTree ADT can be implemented either as a linked structure or an array. it inherits all properties of the Tree ADT, but each node of a binary tree can only have two children `left` and `right`.
 
@@ -157,10 +156,15 @@ the time complexity for the above operations in a binary tree are as follows:
 in contrast to the depth-first implementation with linked structures, we can store the nodes of a binary tree in an array. in this way: 
 - the root node is usually stored at index 0. 
 - for each node at index $i$:
-	- the **left child's** position will be at $2n + 1$
-	- the **right's** will be at $2n + 2$.
+	- the **left child's** position will be at $2i + 1$
+	- the **right's** will be at $2i + 2$.
 
 when using a 0-indexed `binaryTreeArray`, the parent of a node at index $i$ will be at $\lfloor \frac{i -1}{2} \rfloor$.
 
-this method works especially well for perfect/complete binary trees, but not so well for sparser trees.
+alternatively, we can also use an array and have the **root node stored at index 1**. this way, for each node at index $i$: 
+- the **left child** will be at index $2i$
+- the **right child** will be at index $2i + 1$
+- its parent will be at $\lfloor \frac{i}{2} \rfloor$.
+
+this method works especially well for perfect/complete binary trees, but not so well for sparser trees, as the space **wasted** can go up to $2^{h} - n$.
 
