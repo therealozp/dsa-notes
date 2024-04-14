@@ -1,4 +1,4 @@
-an abstract data type (or an ADT for short) is a high-level view of a concept independent of its implementation, defined by its **values** and its **functions.** by contrast, a data structure is a concrete implementation, complete with its own public/private access modifiers, internal values, etc.
+an **abstract data type** (or an ADT for short) is a high-level view of a concept independent of its implementation, defined by its **values** and its **functions.** by contrast, a data structure is a concrete implementation, complete with its own public/private access modifiers, internal values, etc.
 
 as an example, a container is an ADT, but a stack, a queue, or a linked list is a data structure. 
 

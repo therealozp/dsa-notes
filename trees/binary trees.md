@@ -4,10 +4,20 @@ a binary tree must satisfy the following properties:
 
 there are many types of binary trees: 
 - in a **full** (or proper) binary tree, nodes all have either 0 or 2 children.
+
+![[Pasted image 20240326223845.png]]
+
 - in a **perfect** binary tree, all branches have 2 children, and all leaves must be at the same depth
+
+![[Pasted image 20240326224041.png]]
+
 - in a **complete** binary tree, every level (except possibly the last) is completely filled, and pushed as far to the left as possible. 
+
+![[Pasted image 20240326224141.png]]
+
 - in a **balanced** binary tree, the left and right subtrees of all trees must only differ by at most 1. recursively speaking, the left and right subtrees of each node must also be balanced. 
 
+![[Pasted image 20240326224258.png]]
 ## useful properties
 let: 
 - $h$ be the height of a tree T

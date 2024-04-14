@@ -13,7 +13,7 @@ void preorderPrint(const Tree& T, const Position& p) {
 ```
 
 ## postorder traversal
-by contrast, postorder means that a node will be visited after all of its descendants. this is most useful when an operation in postfix notation, or computing the space taken up by a directory. 
+by contrast, postorder means that a node will be visited **after all of its descendants**. this is most useful when evaluating an arithmetic operation in postfix notation, or computing the space taken up by a directory. 
 
 ```cpp
 void postorderPrint(const Tree& T, const Position& p) {  

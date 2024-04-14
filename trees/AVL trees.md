@@ -46,8 +46,7 @@ Algorithm retstructure(x) {
 	2. let t0, t1, t2, t3 be an in-order listing of the subtrees of x, y, and z (not containing these nodes)
 	3. replace the subtree at z with the subtree rooted at b
 	4. let a be the left child of b, make t0 and t1 be the left and right subtrees of a
-	5. let c be the right child of b, make t2 and t3 the left and right
-		subtrees of c
+	5. let c be the right child of b, make t2 and t3 the left and right subtrees of c
 }
 ```
 

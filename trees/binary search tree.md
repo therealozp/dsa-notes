@@ -154,9 +154,10 @@ template <typename E> SearchTree<E>::SearchTree() : T(), n(0) {
 	T.expandExternal(T.root());  
 }
 
-// get virtual root (left child of super root)  
+// get actual root (left child of super root)  
 template <typename E>  
-typename SearchTree<E>::TPos SearchTree<E>::root() const {  
+typename SearchTree<E>::TPos SearchTree<E>::root() const {
+	// here, T.root() returns the super root
 	return T.root().left();  
 }  
 
