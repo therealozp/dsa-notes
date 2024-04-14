@@ -7,7 +7,7 @@ when a tree is non-empty:
 
 all trees will have 1 singular **root** node, and each of its descendants are the roots of new subtrees. an abstract tree can be established using a hierarchy by using a class that: 
 - stores a value
-- stores children in a linked list.
+- stores children in a linked list
 
 each node of a tree will contain the following properties: 
 
