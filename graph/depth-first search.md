@@ -49,7 +49,7 @@ procedure DFS-iterative(G,v) {
 setting/getting a vertex/edge label takes $O(1)$ time, and the method `adjacentVertices()` is called once for each vertex.
 
 runtime: DFS will run in $O(V+E)$ time, provided the graph is represented with an adjacency list.
-- $\Sigma_{v}\deg(v)= 2m$
+- Handshaking lemma: $\Sigma_{v}\deg(v)= 2m$ 
 ## applications
 - finding connected islands (components)
 - topological sorting (toposort)

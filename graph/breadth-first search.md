@@ -49,4 +49,7 @@ procedure BFS(G,v) {
 ## analysis
 each vertex is inserted once to a sequence $L_{i}$
 - method `adjacentVertices()` is called once for each vetex
-- BFS runs in $O(V+E)$ time, provided the graph is represented with an **adjacency list**
+- BFS runs in $O(V+E)$ time, provided the graph is represented with an **adjacency list**, where: 
+	- $O(V)$ comes from marking all vertices and scanning for undiscovered vertices
+	- $O(E)$ comes from looking at neighbors of all vertices (the **handshaking** lemma)
+- if an adjacency matrix is used, the time complexity changes to $O(n^{2})$
