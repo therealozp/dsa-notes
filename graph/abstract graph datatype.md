@@ -98,7 +98,7 @@ vertices and edges are positions that store elements:
 | adding edge          | $O(1)$                       | $O(1)$                                                            | $O(V\times E)$                                               |
 | removing vertex      | $O(E)$                       | $O(V^2)$                                                          | $O(V\times E)$                                               |
 | removing edge        | $O(V)$                       | $O(1)$                                                            | $O(V\times E)$                                               |
-| check node adjacency | $O(E)$                       | $O(1)$                                                            | $O(V)$                                                       |
+| check node adjacency | $O(E)$                       | $O(1)$                                                            | $O(V)$ - should be $O(E)$                                    |
 | pros                 | constant time additions      | constant look up times, constant edge addition                    | ease of incidence calculations, interesting math qualities   |
 | cons                 | slow removal for list search | slow to add/remove vertices, because matrix resize/copy is needed | slow to add/remove vertices/edges because matrix resize/copy |
 ## implementation
