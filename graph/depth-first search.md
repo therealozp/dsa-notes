@@ -1,3 +1,4 @@
+#graph #dfs #theory
 ## properties
 DFS is a general technique that serves as a basis for graph traversals. a dfs of a graph **G**: 
 - visits all the vertices and edges of G

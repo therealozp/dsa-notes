@@ -1,3 +1,4 @@
+#heap #theory
 in binary trees, we have discussed that using an array representation of binary trees provide much better space optimization, but not so much so for the case of sparser trees where the length of the elements can grow to $2^{h}$, while only $n$ nodes are in use.
 
 a heap is a binary trees storing keys that satisfy the **heap property**: 

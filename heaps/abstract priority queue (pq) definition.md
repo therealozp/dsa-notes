@@ -1,3 +1,4 @@
+#heap #pq #theory
 with queues, the order may be basically summarized as first-in-first-out. for pqs, similarly, the object with the highest priority will be popped first from a collection. 
 
 conventionally, we assign a priority to each object. the number 0 represents the highest priority, and decreases with ascending numbers. 

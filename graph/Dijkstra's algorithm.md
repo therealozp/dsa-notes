@@ -1,3 +1,4 @@
+#graph #bfs
 let G be a **weighted** graph with the weight function $w: E \rightarrow R$, and
 - V be the set of vertices
 - E be the set of edges, where $E \leq V \times V$

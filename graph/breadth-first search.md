@@ -1,3 +1,4 @@
+#graph #bfs #theory
 ## properties
 like DFS, BFS is another general technique for graph traversals, where a BFS traversal of a graph G: 
 - visits all the vertices and edges of G

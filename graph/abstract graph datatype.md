@@ -1,3 +1,4 @@
+#graph #theory
 a graph is a pair (V, E) where: 
 - V is a set of nodes, called **vertices**
 - **E** is a collection of **pairs of vertices**, called **edges**.

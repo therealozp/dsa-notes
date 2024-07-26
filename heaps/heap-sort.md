@@ -1,10 +1,10 @@
+#heap
 consider a pq with $n$ items implemented with a heap.
 - uses $O(n)$ space
 - `insert()` and `removeMin()` takes  $O(\log(n))$
 - `size()`, `empty()`, `min()` takes $O(1)$
 
 using a heap-based pq, we can sort a sequence of $n$ elements in $O(n\log(n))$ time, called heap-sort. this is much better than the quadratic sorting algorithms like insertion and selection sort.
-
 ## implementation
 we represent a heap with $n$ keys with a vector of length $n + 1$. for any node at index $i$, the **left child** is at $2i$ and the **right child** is at $2i + 1$.
 - we don't have to store the links between two elements
