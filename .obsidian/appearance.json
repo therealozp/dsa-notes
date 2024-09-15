@@ -1,7 +1,10 @@
 {
   "accentColor": "",
-  "cssTheme": "Atom",
+  "cssTheme": "Sanctum",
   "textFontFamily": "Satoshi",
   "baseFontSize": 19,
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "enabledCssSnippets": [
+    "center-latex-equations"
+  ]
 }
