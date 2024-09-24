@@ -42,3 +42,4 @@ $$T(n) = 2T\left( \frac{a}{2} \right) + O(n)$$
 then, the recursive overhead is $\Theta(n^{\log_{2}2})$, and the iteration overhead is $O(n)$. since they are equal, the complexity is:
 $$T(n) = \Theta(n\log(n))$$
 ### case 3
+the last case is when the pre-recursion or post-recursion operations $f(n)$ completely dominate the time complexity of traversing down the number of subproblems. if that is the case, then the overall time complexity of the algorithm is simply equal to $f(n)$.
