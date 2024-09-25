@@ -5,6 +5,7 @@ RAM model basically measures how fast an algorithm is by counting the number of 
 - `data[j]`
 - `<` to compare
 
+in more formal terms, the RAM model is an abstract machine where 
 ## worst-average-best cases
 **worst-case** TC means the maximum number of steps taken for an arbitrary input size $n$. similarly, best cases means the minimum, and average case means average.
 
