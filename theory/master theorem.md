@@ -13,11 +13,10 @@ function recur(input x of size n):
 
 the Master theorem states that: if $T$ is an increasing function that satisfies the recurrence:
  $$T(n) = aT\left( \frac{n}{b} \right) + f(n)$$
-for $a \geq 1$ and $b > 1$, and $c = \log_{b}{a}$ then:
+for $a \geq 1$ and $b > 1$, and critical value $c = \log_{b}{a}$ then:
 - if $f(n) = O(n^{c-\epsilon})$ for some $\epsilon > 0$, then $T(n) = \Theta(n^{c})$
 - in $f(n)= \Theta(n^{c})$, then $T(n)=\Theta(n^{c}\log(n))$
 - in $f(n) = \Omega(n^{c+\epsilon})$ for some $\epsilon > 0$ and $af\left( \frac{n}{b} \right) < f(n)$, then $T(n)=O(f(n))$
-
 ### case 1
 if the *number of leaf nodes outweigh the internal calculation complexity*, then the time complexity is dominated by the number of subproblems we have to go through. for example, in the trivial case of calculating the Fibonacci:
 
