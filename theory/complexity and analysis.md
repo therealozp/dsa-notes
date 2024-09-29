@@ -21,6 +21,7 @@ advantages:
 - it simplifies analysis of algorithms
 - provides a uniform base for computing
 - it closely mirrors actual computer architecture
+
 ## worst-average-best cases
 **worst-case** TC means the maximum number of steps taken for an arbitrary input size $n$. similarly, best cases means the minimum, and average case means average.
 
