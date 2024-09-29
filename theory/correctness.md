@@ -39,7 +39,6 @@ $$
 \end{split}
 \end{equation}
 $$
-
 ## strong induction
 
 > prove that a pile of $n$ stones will always take $n-1$ moves to split into $n$ piles of $1$ stone.
@@ -57,19 +56,22 @@ $$1 \text{ (for the original split)} + (a - 1) + (b - 1) = a + b - 1 = k + 1 - 1
 - merge: this operation linearly goes through two halves, thus the order is preserved.
 $\rightarrow$ the array is sorted correctly.
 ## weak vs strong induction
-**weak induction**: used when each step only depends on the immediately preceding steps (assume for any arbitrary $k$, prove $k + 1$)
-**strong induction**: used when each step may depend on *any or all* of the previous steps (assume for **all items up to $k$**, prove $k + 1$)
+**weak induction**: used when each step only depends on the immediately preceding step (assume for any arbitrary $k$, prove $k + 1$)
+**strong induction**: used when each step may depend on *any or all* of the previous steps (assume for **all items up to $k$**, prove $k + 1$
+
 ## loop invariant
-a loop invariant is **a property or a condition that holds true and before and after each iteration** of a loop. normally, it would be something like "this is what the loop has done so far."
+a loop invariant is **a property or a condition that holds true before initialization, before and after each iteration, and after termination**. normally, it would be something like "this is what the loop has done so far."
+
+invariants are true even when the loop condition is false.
 
 it has the following properties: 
 - **initialization**: the LI is true before the first iteration of the loop. 
-- **maintenance**: if the LI is true at the start of one iter, then it should also be true at the start of the next iter.
+- **maintenance**: if the LI is true at the start of one iteration, then it should also be true at the start of the next iteration.
 - **termination**: when the loop terminates, LI gives a useful property to prove correctness.
 
 in other words, it is a **statement** that must be true:
-- before the first iter
-- at the end of any iter, if it is true at the start
+- before the first iteration
+- at the end of any iteration, if it is true at the start
 - at the very end of the loop.
 
 to prove a loop invariant:
@@ -106,5 +108,13 @@ def selection_sort(arr):
 
 in this function, the LI is: after iteration $i$, the first $i$ elements of `arr` will be sorted. for the inner loop, the LI is min_index is the index of the minimum element from `[i + 1, j]`
 
-## contradiction
-**disprove** the claim that $b$ and $p$ are positive integers such that $b$ is not a multiple of $p$, then $b^{p-1}$ 
+## proving incorrectness
+## counterexample
+- very simple, much better than induction
+- find *one* instance with an incorrect solution
+
+always start small first. think about how algorithm deal with **extremes**: 
+- infinitely large/small?
+- large range, or all identical values?
+
+**disprove** the claim that $b$ and $p$ are positive integers such that $b$ is not a multiple of $p$, then $b^{p-1}$ $\to$ just find any where $b$ and $p$ has a common factor.
