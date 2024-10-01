@@ -62,7 +62,10 @@ given that $k > j > 2$ and $b > a > 1$.
 $$
 \sum_{i = 1}^{n}{\frac{1}{i}} = \Theta(\lg(n))
 $$
-
+### properties of summation
+$$\sum_{i = 1}^{n}{i} = \Theta(n^2)$$
+$$\sum_{i = 1}^{n}{2^i} = \Theta(2^{n})$$
+$$\sum_{i = 1}^{n}{\frac{1}{2^i}} = \Theta(1)$$
 ## big-O properties
 1. reflexivity: $f(n) = O\text{ or }\Omega \text{ or }\Theta(f(n))$
 2. anti-symmetry: $f(n) = O(g(n)) \iff g(n) = \Omega(f(n))$
