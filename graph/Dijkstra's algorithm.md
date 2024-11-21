@@ -25,10 +25,11 @@ to simplify, the lemma is stating that if the distance to $u$ is already minimiz
 - maintains an estimate $d[v]$ of length $\sigma(s, v)$ of the shortest path to each vertex $v \in G$.
 - process all vertices, one by one, in some order. processing a vertex $u$ means finding a new path and updating $d[v]$ for all $v \in \text{adjacent}(u)$. this process is called **relaxation.**
 - maintains a subset of vertices $S \subseteq V$, for which the true minimum distance is known. 
-- the vertices are then selected one-by-one from $V -S$ (the vertices whose true minimum distance is **NOT** known) to be added into $S$. the next-selected vertex is always a vertex $u$ in this subset where the estimated distance $d[u]$ is **minimum**.
+- the vertices are then selected one-by-one from $V -S$ (the vertices whose true minimum distance is **NOT** known) to be added into $S$. 
+- the next-selected vertex is always a vertex $u$ in this subset where the estimated distance $d[u]$ is **minimum**.
 
 ```cpp
-procedure dijkstra() {
+algorithm dijkstra() {
 	for each v in all_vertices {
 		d[v] = infinity;
 		v.predecessor = NULL;
@@ -56,6 +57,31 @@ procedure relax(Vertex u, Vertex v, WeightFunction w) {
 }
 ```
 
+in legible python, dijkstra's would look something like:
+
+```python
+def dijkstra(source, target):
+	dist = [float('inf')] * n
+	visited = [False] * n
+	
+	pq = [(0, source)]
+	while pq: # maximum will iterate E times
+		weight, v = heappop(pq) # log(V) per insert/pop
+		if v == target:
+			return weight
+		if visited[v]:
+			continue
+		visited[v] = True
+		dist[v] = weight
+		
+		for neighbor, w in adj[node]: # maximum will iterate V times
+			if dist[v] + w < dist[neighbor]:
+				heappush(pq, (dist[v] + weight, neighbor)) # also log(V)
+	
+	return -1
+```
+
+note that in this implementation, the time complexity is $O((E +V)\log V)$ due to the repeated `heappush` and `heappop` calls. optimally, Dijkstra's would run in $O(V + E\log V)$.
 ## analysis
 - initialization is executed $V$ times
 - each vertex is processed **once**, so `extract_minimum()` is executed $V$ times in total
@@ -65,8 +91,8 @@ $\rightarrow$ the runtime of Dijkstra's algorithm is $V\times T_{\text{extract\_
 | implementation | $T_{\text{extract\_min}}$ | $T_{\text{decrease\_key}}$ | total                   |
 | -------------- | ------------------------- | -------------------------- | ----------------------- |
 | array          | $O(V)$                    | $O(1)$                     | $O(V^2)$                |
-| binary heap    | $O(\log(V))$              | $O(\log(V))$               | $O((V+E)\times\log(v))$ |
-| Fibonacci heap | $O(\log(V))$              | $O(1)$                     | $O(V\log(v) + E)$       |
+| binary heap    | $O(\log V)$               | $O(\log V)$                | $O((V+E)\times\log(v))$ |
+| Fibonacci heap | $O(\log V)$               | $O(1)$                     | $O(E\log V + V)$        |
 ## properties
 1. the upper bound property: the invariant $d[v] \geq \sigma(s, v)$ will always hold for all $v$. 
 2. when a vertex is added to $S$ (visited nodes), $d[u] = \sigma(s, u)$

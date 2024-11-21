@@ -32,6 +32,30 @@ def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         return dp[0][0]
 ```
 
+if the problem requires to keep track of the string, something like this could be done. note that it can also be done starting from index 1 to index n.
+```python
+def lcs(string1, string2):
+    n = len(string1)
+    m = len(string2)
+    
+    dp = [["" for _ in range(m + 1)] for _ in range(n + 1)]
+    for i in range(n + 1):
+        for j in range(m + 1):
+            if i == 0 or j == 0:
+                continue
+            max_string = ""
+            if len(dp[i][j - 1]) > len(max_string):
+                max_string = dp[i][j - 1]
+            if len(dp[i - 1][j]) > len(max_string):
+                max_string = dp[i - 1][j]
+            
+            if string1[i - 1] == string2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + string1[i - 1]
+            else:
+                dp[i][j] = max_string
+    
+    return dp[-1][-1]
+```
 ## Complexity
 Time complexity: $O(m \times n)$, where $m$ and $n$ are the lengths of each string
 Space complexity: $O(m \times n)$, as we have to store a 2D array.

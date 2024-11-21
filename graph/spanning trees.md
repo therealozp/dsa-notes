@@ -22,15 +22,19 @@ while (instance is not solved) {
 ### Prim's algorithm
 the idea is to always greedily select the lowest-weighted edge connected to the current tree at every step. since the MST always include all vertices, the starting vertex actually does not matter - it could be anything.
 
+- starts at one vertex
+- adds an edge to the nearest, unconnected vertex
+- repeat until a spanning tree is attained
+
 pseudocode: 
 ```python
+original vertices_set V
 edges_set (F) = set()
 vertices_set (Y) = set()
 
 add arbitrary vertex to vertices_set
 while Y != V:
-	for each edge:
-		select a vertex in V - Y nearest to Y
+	find the closest unvisited vertex
 	if no cycle is formed:
 		add selected vertex to Y
 		add edge to F
@@ -38,59 +42,67 @@ while Y != V:
 
 actual code:
 ```python
-def prim(n: int, weight_matrix: int [][], edge_set: set):
-	nearest = [0] * n
-	dist = [0] * n
+def min_unselected(dist, selected):
+	min_value = float('inf')
+	min_index = 1
+	for v in vertices:
+		if visited[v] == False and dist[v] < min_key:
+			min_value = dist[v]
+			min_index = v
+	return min_index
 
+def prim(n: int, adj_matrix: int [][], edge_set: set):
+	parent = [-1] * n
+	dist = [float('inf')] * n
+	visited = [False] * n
+	
+	mst_edges = []
+	dist[0] = 0 # start from first vertex
+	visited[0] = True
+	
 	# assuming that vertex 1 is already in the MST
-	for i in range(2, n):
-		nearest[i] = 1
-		dist[i] = weight_matrix[1][i]
-
-	while (n > 0):
-		min_dist = float('inf')
-		# finds the nearest vertex available
-		for i in range(2, n):
-			if  0 <= dist[i] < min_dist:
-				min_dist = dist[i]
-				nearest_vertex = i
+	for i in range(n - 1): # executes n - 1 times
+		# gets the closest unvisited vetex
+		u = min_unselected(dist, selected)
+		visited[u] = True
 		
-		edge = edge connecting nearest_vertex and nearest[nearest_vertex]
-		edge_set.add(edge)
+		# finds the closest edge that connects to the fetched vertex
+		for v in vertices: 
+			# if the edge doesn't exist, skip
+			if not adj_matrix[u][v]:
+				continue
+			if visited[v] == False and adj_matrix[u][v] < dist[v]:
+				dist[v] = adj_matrix[u][v]
+				parent[v] = u
 		
-		dist[i] = -1
-		for i in range(2, n):
-			if W[i][nearest_vertex] < dist[i]:
-				dist[i] = W[i][nearest_vertex]
-				nearest[i] = nearest_vertex
+	for i in range(1, n):
+		mst_edges.append(parent[i], i, adj_matrix[i][parent[i]])
 ```
-this variant of Prim's algorithm yields a runtime of $O(n^2)$, as there are nested loops of size $n$.
+this variant of Prim's algorithm yields a runtime of $O(n^2)$, where $n$ is the number of vertices
 
 alternatively, another solution using priority queues:
 ```python
-def tree(V, E, edges):
-    adj = [[] for _ in range(V)]
-    for i in range(E):
-        u, v, wt = edges[i]
-        adj[u].append((v, wt))
-        adj[v].append((u, wt))
-        
+def tree(graph):
+	# construct adjacency list
+	mst_edges = []      
     pq = []
     visited = [False] * V
     res = 0
-    heapq.heappush(pq, (0, 0))
+    heapq.heappush(pq, (0, 0, None)) # weight, vertex, parent
     while pq:
-        wt, u = heapq.heappop(pq)
+        wt, u, parent = heapq.heappop(pq)
         if visited[u]:
             continue  
-        res += wt  
         visited[u] = True  
+        
+	    if parent is not None:
+		    mst_edges.append((parent, vertex, weight))
         for v, weight in adj[u]:
             if not visited[v]:
-                heapq.heappush(pq, (weight, v))  
-    return res  
+                heapq.heappush(pq, (weight, v, u))  
+    return mst_edges
 ```
-this method yields a runtime of $O(E\log E)$, where $E$ is the number of edges. this is due to the property of heaps, and we only check all of the edges + push/pop them off the heap. 
+this method yields a runtime of $O(n+m\log n)$, where $m$ is the number of edges. this is due to the property of heaps, and we only check all of the edges + push/pop them off the heap. 
 
 ## Kruskal's algorithm
 similar to Prim's in the sense that it greedily selects the lowest-weighted edge, Kruskal's process goes:
@@ -142,7 +154,10 @@ time complexity analysis:
 	- the `find` operations takes $O(\log m)$ time
 	- worst case, every edge needs to be considered -> $O(m\log m)$ time complexity
 4. to connect $n$ nodes requires at least $n - 1$ edges, so $O(m\log m) = \Theta(n\log n)$
-5. when it is fully connected, the number of edges $m$ is:
+
+the final TC for Kruskal's is $O(n + m\log m)$.
+
+when it is fully connected, the number of edges $m$ is:
 $$m=\frac{n(n-1)}{2}=\Theta(n^2)$$
 so, the final time complexity is $\Theta(n^{2}\log n)$
 ## comparison

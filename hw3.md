@@ -187,3 +187,107 @@ so, the average bits used by Huffman encoding is $\frac{335}{130}=2.57692307692$
 d. 
 the compression ratio compared to fixed-length encoding is:
 $$\frac{2.576 - 3}{3} \times 100\%=14.10\%$$
+
+## hw5
+## problem 1
+a.
+for each number in the denominations, the number of coins required to make a value of $n$ is dependent on the values before, all the way from $n - d_{1}$ to $n - d_{m}$. this is where the overlapping subproblem comes in, for example, to make coins for 5, 6, and 9 for the denominations 1, 2, and 4 respectively, they all have an overlapping subproblem of 4.
+
+c. 
+pseudocode:
+```python
+def min_coins(denom, n):
+	dp = [-1] * (n + 1)
+	for i in range(n + 1):
+		min_coins = float('inf')
+		for d in denom:
+			if i - d >= 0:
+				min_coins = min(min_coins, dp[i - d] + 1)
+		dp[i] = min_coins
+	return dp[n]
+```
+
+## problem 2
+a. 
+the entire key with this problem is that, at every given step, we are given 2 choices of how to proceed. we can either: 
+- skip (not take) the item, lose out on all the benefit, but conserve some amount of weight
+- take the item, and bear the weight.
+
+so, the solution 
+```python
+dp(i, remaining_weight) = max(
+		dp(i + 1, remaining_weight),
+		benefit[i] + dp(i + 1, remaining_weight - weight[i]
+		)
+```
+
+c.
+pseudocode
+```python
+def bottom_up_knapsack(benefit, weight, capacity):
+	dp = matrix of size(n * capacity + 1)
+	for i in range(n):
+		for cw in range(capacity + 1):
+			if weight[i] > cw:
+				# if it is over capacity, skip the item
+				# unless it is the first item, in which case default to 0
+				dp[i][cw] = 0
+				if i > 0:
+					dp[i][cw] = dp[i - 1][cw]
+			else:
+				skip = dp[i - 1][w]
+				take = benefit[i] + dp[i - 1][cw - weight[i]]
+				dp[i][cw] = max(skip, take)
+	return dp[-1][-1]
+```
+
+prim's
+![[Pasted image 20241121005919.png]]
+![[Pasted image 20241121010024.png]]
+![[Pasted image 20241121010044.png]]
+![[Pasted image 20241121010101.png]]
+![[Pasted image 20241121010121.png]]
+![[Pasted image 20241121010142.png]]
+![[Pasted image 20241121010155.png]]
+![[Pasted image 20241121010216.png]]
+
+kruskal's: 
+![[Pasted image 20241121010435.png]]
+![[Pasted image 20241121010500.png]]
+![[Pasted image 20241121010524.png]]
+![[Pasted image 20241121010548.png]]
+![[Pasted image 20241121010618.png]]
+![[Pasted image 20241121010646.png]]
+![[Pasted image 20241121010740.png]]
+![[Pasted image 20241121010804.png]]
+
+```python
+def prims(graph):
+	# graph is an adjacency matrix
+	mst_edges = []
+	visited = [False] * n
+	parent = [None] * n
+	dist = [float('inf')] * n
+
+	visited[0] = True
+	dist[0] = 0
+	
+	for i in range(n - 1):
+		u = the closest unvisited node
+		visited[u] = True
+		
+		for v in range(n):
+			if edge(u, v) does not exist: 
+				continue
+				
+			if not visited[v] and graph[u][v] < dist[v]:
+				# only worry about the value of the edge
+				# so the dist[v] will continously be updated
+				# with the lowest found edge weight connected to v
+				dist[v] = graph[u][v]
+				parent[v] = u
+	
+	for i in range(len(parent)):
+		if parent[i] is not None:
+			mst_edges.append(parent, i, weight)
+```
