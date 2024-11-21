@@ -1,9 +1,18 @@
 #graph #theory
-a graph is a pair (V, E) where: 
-- V is a set of nodes, called **vertices**
-- **E** is a collection of **pairs of vertices**, called **edges**.
-- both V and E are positions, and stores elements.
+the **order** of a graph is defined as the **number of vertices** in the graph. typically $n$, or $|V|$
+the **size** of a graph is the **number of edges** in the graph
 
+a graph's complexity typically scales with both $n$ and $m$, and $m = O(n^{2})$.
+
+## theory of connectivity
+two vertices are **connected** if they share a path between them. likewise, a connected graph is a graph where **all vertices are connected**.
+
+- **walk**: a sequence of vertices joined by edges
+- **path**: a walk with no repeated vertices/edges
+- **circuit**: a walk that begins and ends at the same vertex.
+- **cycle**: **non-trivial path** that begins and ends at same vertex.
+
+if there exists a $(u, v)$ walk, then a $(u, v)$ path exists.
 ## edges
 a directed edge is: 
 - an **ordered** pair of vertices (u, v)
@@ -170,10 +179,3 @@ a **tree** is an undirected graph **T** such that:
 this is similar to the tree family of binary trees, AVL trees; the only difference is that these are **rooted**.
 
 a **forest** is an undirected graph without cycles, meaning that the connected components of a forest are trees.
-
-## spanning tree
-a spanning tree of a connected graph, is a spanning subgraph that is a tree. or, in other words, a spanning subgraph that is connected and has no cycles. these are **NOT** unique, unless the graph itself is a tree.
-
-similarly, a spanning forest of a graph is a spanning subgraph that is a forest. 
-
-these concepts are especially useful for designing communication networks.

@@ -10,16 +10,16 @@ RAM model basically measures how fast an algorithm is by counting the number of 
 - `data[j]`
 - `<` to compare
 
-formally, the RAM model of computation is an abstract machine used to simplify analysis of algorithms, by assuming that the algorithm has access to infinite memory. 
+formally, the RAM model of computation is a model of an abstract machine used to simplify analysis of algorithms, by assuming that the algorithm has access to infinite memory. 
 
 the main assumptions of the RAM model are: 
 - all basic functions (assignment, arithmetic, branching, etc.) take 1 operation (except for loops and custom-defined functions)
-- memory access is instantaneous
+- memory access is instantaneous, and only takes 1 time step
 - we have access to unlimited memory
 
 advantages:
 - it simplifies analysis of algorithms
-- provides a uniform base for computing
+- provides a uniform base for computing, independent of other factors
 - it closely mirrors actual computer architecture
 
 ## worst-average-best cases
@@ -31,7 +31,7 @@ a technique for abstracting complexity. the key idea is **asymptotic analysis**,
 - "fast" algorithms will eventually pass "slow" algorithms after a certain size $n$
 - used for practical analysis and worst-case estimations.
 ### notation
-**upper bound (at most)**: $O(g(n))$: for a certain $f(n)$, there exists positive constants $c$ and $n_{0}$ such that $c\times f(n) \leq g(n)$ for all $n \geq n_{0}$.
+**upper bound (at most)**: $O(g(n))$: for a certain $f(n)$, there exists **positive** constants $c$ and $n_{0}$ such that $c\times f(n) \leq g(n)$ for all $n \geq n_{0}$.
 **lower bound (at least)**: $\Omega(n)$: $f(n) \geq c\times g(n)$
 **upper and lower bound (same rate as)**: $\Theta(n)$: $c_{1}g(n) \leq f(n) \leq c_{2}g(n)$
 
@@ -92,7 +92,7 @@ $$\sum_{i = 1}^{n}{\frac{1}{2^i}} = \Theta(1)$$
 - loops:
 	- number of iterations?
 		-  if it is **incrementing** by $c$ `+= c`: divide range by $c$ to get num iterations.
-		- it it is **scaling** by $c$ `*= c`: take the $\log_{c}$ of end/start ratio.
+		- it it is **scaling** by $c$ `*= c`: take the $\log_{c}$ of **end/start ratio.**
 	- estimate loop body runtime
 	- does loop runtime depend on iteration number (e.g. nested loops)?
 		- **no**: `total = iterations * time per iteration`
