@@ -37,6 +37,14 @@ a technique for abstracting complexity. the key idea is **asymptotic analysis**,
 
 to simplify understanding, when we say $f(n) = O(g(n))$, that effectively means $f(n) \text{ is upper bounded by } g(n)$. similarly to other symbols as well.
 
+## little O
+mostly used in theoretical contexts to emphasize strict growth rate differences (when demonstrating proofs)
+
+$f(n) = o(g(n))$ if, **for every positive real constant** $c$, there exists a *nonnegative* integer $N$ such that:
+$$\forall n \ge N, f(n) \le c\times g(n)$$
+for big O, we only need to find **some** positive real constant. for little o, it most hold for every single constant.
+
+same thing for little $\Omega$ ($\omega$). if $f(n) = \omega(g(n))$, $f(n) \ge c\times g(n)$ for all constants of $c$.
 ### properties of order
 - $g(n)\in O(f(n)) \iff f(n) \in \Omega(g(n))$
 - $g(n)\in \Theta(f(n)) \iff f(n) \in \Theta(g(n))$
@@ -78,16 +86,6 @@ $$\sum_{i = 1}^{n}{\frac{1}{2^i}} = \Theta(1)$$
 	- **multiplication**: $O(f(n)) \times O(g(n)) = O(f(n) \times g(n))$
 6. ignore all constant terms (due to asymptotic analysis)
 7. only the largest term matters
-
-## little O
-mostly used int theoretical contexts to emphasize strict growth rate differences (when demonstrating proofs)
-
-$f(n) = o(g(n))$ if, **for every positive real constant** $c$, there exists a *nonnegative* integer $N$ such that:
-$$\forall n \ge N, f(n) \le c\times g(n)$$
-for big O, we only need to find **some** positive real constant. for little o, it most hold for every single constant.
-
-same thing for little $\Omega$ ($\omega$). if $f(n) = \omega(g(n))$, $f(n) \ge c\times g(n)$ for all constants of $c$.
-
 
 ## how to analyze algorithms
 - except for loops and function calls, everything is $\Theta(1)$.

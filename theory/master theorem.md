@@ -27,7 +27,7 @@ def fib(n):
 	return fib(n - 1) + fib(n - 2)
 ```
 
-there is no calculation for determining the subproblems, but jumps straight to solving through subproblems. therefore, the number of leaf nodes will **outweigh** the internal calculation. 
+there is no calculation for determining the subproblems, but jumps straight to solving through subproblems, specifically, 2 problems of size (n - 1) and (n - 2), respectively. therefore, the number of leaf nodes will **outweigh** the internal calculation. 
 
 more formally, if $f(n) = O(n^{c-\epsilon})$, where $\epsilon > 0$, then
 $$T(n) = \Theta(n^{\log_{b}{a}})$$
