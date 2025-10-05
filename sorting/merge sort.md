@@ -1,3 +1,5 @@
+#divide-and-conquer #recursion 
+
 one of the basic sorting algorithms based on the divide-and-conquer paradigm. 
 - uses a comparator
 - $O(n\log(n))$ runtime
